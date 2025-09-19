@@ -25,6 +25,7 @@ public class Pokemon
     public string Nome { get; set; }
 
     [StringLength(1000)]
+    [Display(Name = "Descrição")]
     public string Descricao { get; set; }
 
     [Column(TypeName = "double(5,2)")]
