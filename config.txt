@@ -1,6 +1,6 @@
 -- Configuração do GIT
-git config --global user.name GalloJunior
-git config --global user.email gallojunior@gmail.com
+git config --global user.name thigasdo96
+git config --global user.email primothiago8@gmail.com
 
 -- Criar o gitignore
 dotnet new gitignore
