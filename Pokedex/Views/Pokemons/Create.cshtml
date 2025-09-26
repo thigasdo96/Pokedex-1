@@ -1,7 +1,7 @@
 @model Pokedex.Models.Pokemon
 
 @{
-    ViewData["Title"] = "Create";
+    ViewData["Title"] = "Pokemon";
     Layout = "~/Views/Shared/_LayoutAdmin.cshtml";
 }
 
@@ -9,10 +9,19 @@
 
 <h4>Pokemon</h4>
 <hr />
-<div class="row">
-    <div class="col-md-4">
-        <form asp-action="Create">
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+
+    <form asp-action="Create" class="row" enctype="multipart/form-data">
+        <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+        <div class="col-md-4">
+            <div class="mb-3">
+                <label class="form-label mb-2 w-100"></label>
+                <img id="Preview" src="~/img/semfoto.gif" class="img-fluid mb-3" />
+                <input type="file" name="Arquivo" class="form-control" />
+
+            </div>
+        </div>
+        <div class="col-md-8">
             <div class="form-group">
                 <label asp-for="Numero" class="control-label"></label>
                 <input asp-for="Numero" class="form-control" />
@@ -20,11 +29,11 @@
             </div>
             <div class="form-group">
                 <label asp-for="RegiaoId" class="control-label"></label>
-                <select asp-for="RegiaoId" class ="form-control" asp-items="ViewBag.RegiaoId"></select>
+                <select asp-for="RegiaoId" class="form-control" asp-items="ViewBag.RegiaoId"></select>
             </div>
             <div class="form-group">
                 <label asp-for="GeneroId" class="control-label"></label>
-                <select asp-for="GeneroId" class ="form-control" asp-items="ViewBag.GeneroId"></select>
+                <select asp-for="GeneroId" class="form-control" asp-items="ViewBag.GeneroId"></select>
             </div>
             <div class="form-group">
                 <label asp-for="Nome" class="control-label"></label>
@@ -46,11 +55,7 @@
                 <input asp-for="Peso" class="form-control" />
                 <span asp-validation-for="Peso" class="text-danger"></span>
             </div>
-            <div class="form-group">
-                <label asp-for="Imagem" class="control-label"></label>
-                <input asp-for="Imagem" class="form-control" />
-                <span asp-validation-for="Imagem" class="text-danger"></span>
-            </div>
+
             <div class="form-group">
                 <label asp-for="Animacao" class="control-label"></label>
                 <input asp-for="Animacao" class="form-control" />
@@ -59,11 +64,29 @@
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
-        </form>
-    </div>
-</div>
+        </div>
+
+
+    </form>
+
+
 
 <div>
     <a asp-action="Index">Back to List</a>
 </div>
 
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script>
+            window.addEventListener('load',$ function(){
+                document.querySelector('input[type=file]')
+                .addEventListener('change', function() {
+                    if (this.files && this.files[0]) {
+                        var img = document.getElementById('Preview');
+                        img.scr = URL.createObjectURL(this.files[0]);
+                    }
+                })
+            })
+    </script>
+}

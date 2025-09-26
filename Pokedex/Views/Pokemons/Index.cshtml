@@ -16,7 +16,7 @@
                 d="M8 4a.5.5 0 0 1 .5.5v3h3a.5.5 0 0 1 0 1h-3v3a.5.5 0 0 1-1 0v-3h-3a.5.5 0 0 1 0-1h3v-3A.5.5 0 0 1 8 4" />
         </svg> Adicionar</a>
 </p>
-<table class="table">
+<table class="table table-striped" id="table">
     <thead>
         <tr>
             <th>
@@ -38,6 +38,7 @@
             <th>Ações</th>
         </tr>
     </thead>
+
     <tbody>
         @foreach (var item in Model)
         {
@@ -69,3 +70,13 @@
         }
     </tbody>
 </table>
+@section Styles {
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.3.4/css/dataTables.dataTables.min.css">
+}
+
+@section Scripts {
+    <script src="https://cdn.datatables.net/2.3.4/js/dataTables.min.js"></script>
+    <script>
+        let table .5v3h3a=table new DataTable('#table');
+    </script>
+}
